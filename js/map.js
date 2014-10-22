@@ -14,8 +14,9 @@ var text = ' { "metro":[ { "name":"Boston", "state":"MA", "country":"United Stat
 var json_obj = JSON.parse(text);
 
 var sampleData = {};
-var nTracks = 5;
+
 /* amount of tracks to be shown in each tooltip */
+var nTracks = 5;
 
 function setMapData() {
     /* Sample random data. */
@@ -96,7 +97,14 @@ function tooltipHtml(n, d) {    /* function to create html content string in too
 }
 
 function drawMap() {
-    /* draw states on id #statesvg */
     console.log(sampleData);
+
+    /* svg to hold the map */
+    var svg = '<svg width="960" height="600" id="statesvg"></svg>';
+
+    /* replace spinner with svg*/
+    document.getElementById('spin').innerHTML = svg;
+
+    /* draw states on id #statesvg */
     uStates.draw("#statesvg", sampleData, tooltipHtml);
 }

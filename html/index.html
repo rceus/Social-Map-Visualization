@@ -3,23 +3,103 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" href="../css/map.css">
+    <link rel="stylesheet" href="../css/starter-template.css">
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="../js/uStates.js"></script>
+
     <!-- creates uStates. -->
+    <script type="text/javascript" src="../js/uStates.js"></script>
+
+    <!-- LastFM JavaScript API by Felix Bruns -->
     <script type="text/javascript" src="../js/javascript-last.fm-api/lastfm.api.js"></script>
     <script type="text/javascript" src="../js/javascript-last.fm-api/lastfm.api.md5.js"></script>
     <script type="text/javascript" src="../js/javascript-last.fm-api/lastfm.api.cache.js"></script>
-    <title></title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript" src="../js/spin.min.js"></script>
+    <title>MapFM</title>
 </head>
 <body>
-<div id="tooltip"></div>
-<!-- div to hold tooltip. -->
-<svg width="960" height="600" id="statesvg"></svg>
-<!-- svg to hold the map. -->
-<script src="../js/map.js" type="text/javascript"></script>
-<script>
-setMapData();
-setTimeout("drawMap()",10000);
-</script>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">MapFM</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!-- <li class="active"><a href="#">Home</a></li> -->
+                 <li><a href="../CS467%20Design%203.pdf">About</a></li>
+                <!-- <li><a href="#contact">Contact</a></li> -->
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>MapFM</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac hendrerit augue. Curabitur egestas fermentum vulputate. Donec quis ipsum vitae nulla aliquet posuere eu.</p>
+
+        <!-- div to hold tooltip. -->
+        <div id="tooltip"></div>
+
+        <script>
+            var opts = {
+                lines: 11, // The number of lines to draw
+                length: 40, // The length of each line
+                width: 13, // The line thickness
+                radius: 40, // The radius of the inner circle
+                corners: 1, // Corner roundness (0..1)
+                rotate: 10, // The rotation offset
+                direction: 1, // 1: clockwise, -1: counterclockwise
+                color: '#000', // #rgb or #rrggbb or array of colors
+                speed: 0.7, // Rounds per second
+                trail: 83, // Afterglow percentage
+                shadow: false, // Whether to render a shadow
+                hwaccel: false, // Whether to use hardware acceleration
+                className: 'spinner', // The CSS class to assign to the spinner
+                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                top: '50%', // Top position relative to parent
+                left: '50%' // Left position relative to parent
+            };
+        </script>
+        <div id="spin">
+               <script>
+                   var target = document.getElementById('spin');
+                   var spinner = new Spinner(opts).spin(target);
+                   target.appendChild(spinner.el);
+               </script>
+        </div>
+        <script src="../js/map.js" type="text/javascript"></script>
+        <script>
+            setMapData();
+            setTimeout("drawMap()", 10000);
+        </script>
+    </div>
+
+</div><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
