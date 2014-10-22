@@ -57,9 +57,11 @@
 
 	function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
 		return "<h4>"+n+"</h4><table>"+
-			"<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
-			"<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
-			"<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
+			"<tr><td>"(d.img0)"</td><td>"+(d.trk0)+"</td></tr>"+
+			"<tr><td>"(d.img1)"</td><td>"+(d.trk1)+"</td></tr>"+
+			"<tr><td>"(d.img2)"</td><td>"+(d.trk2)+"</td></tr>"+
+			"<tr><td>"(d.img3)"</td><td>"+(d.trk3)+"</td></tr>"+
+			"<tr><td>"(d.img4)"</td><td>"+(d.trk4)+"</td></tr>"+
 			"</table>";
 	}
 	
@@ -82,6 +84,10 @@
 				//For every state assign it these arrays of top 5 tracks with images alongwith
 			}
 
+			sampleData[d]={
+				img0: images[0], img1: images[1], img2: images[2], img3: images[3], img4: images[4],
+				trk0: tracks[0], trk1: tracks[1], trk2: tracks[2], trk3: tracks[3], trk4: tracks[4]
+			};
 			/*var low=Math.round(100*Math.random()), 
 				mid=Math.round(100*Math.random()), 
 				high=Math.round(100*Math.random());
