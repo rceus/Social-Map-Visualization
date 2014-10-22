@@ -72,7 +72,12 @@
                 return d.d;
             })
             .style("fill", function (d) {
-                return data[d.id].color;
+                if (data[d.id] != undefined) {
+                    return data[d.id].color;
+                }
+                else {
+                    return "#ffffff";
+                }
             })
             .on("mouseover", mouseOver).on("mouseout", mouseOut);
     };

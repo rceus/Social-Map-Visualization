@@ -10,70 +10,93 @@ var lastfm = new LastFM({
     cache: cache
 });
 
-var text = ' { "city":[ { "name":"Boston", "state":"MA", "country":"United States" }, { "name":"Austin", "state":"TX", "country":"United States" }, { "name":"Jacksonville", "state":"FL", "country":"United States" }, { "name":"Pensacola", "state":"FL", "country":"United States" }, { "name":"New Orleans", "state":"LA", "country":"United States" }, { "name":"Houston", "state":"TX", "country":"United States" }, { "name":"Atlanta", "state":"FL", "country":"United States" }, { "name":"Nashville", "state":"TN", "country":"United States" }, { "name":"Memphis", "state":"TN", "country":"United States" }, { "name":"Little Rock", "state":"AR", "country":"United States" }, { "name":"Denver", "state":"CO", "country":"United States" }, { "name":"Milwaukee", "state":"WI", "country":"United States" }, { "name":"El Paso", "state":"TX", "country":"United States" }, { "name":"Tampa", "state":"FL", "country":"United States" }, { "name":"Orlando", "state":"FL", "country":"United States" }, { "name":"Philadelphia", "state":"PA", "country":"United States" }, { "name":"Minneapolis", "state":"MN", "country":"United States" }, { "name":"Columbus", "state":"OH", "country":"United States" }, { "name":"Cleveland", "state":"OH", "country":"United States" }, { "name":"Pittsburgh", "state":"PA", "country":"United States" }, { "name":"Washington DC", "state":"MD", "country":"United States" }, { "name":"Baltimore", "state":"MD", "country":"United States" }, { "name":"Virginia Beach", "state":"VA", "country":"United States" }, { "name":"Richmond", "state":"VA", "country":"United States" }, { "name":"Detroit", "state":"MI", "country":"United States" }, { "name":"Chicago", "state":"IL", "country":"United States" }, { "name":"St Louis", "state":"MO", "country":"United States" }, { "name":"Indianapolis", "state":"IN", "country":"United States" }, { "name":"Louisville", "state":"KY", "country":"United States" }, { "name":"Cincinnati", "state":"OH", "country":"United States" }, { "name":"Syracuse", "state":"NY", "country":"United States" }, { "name":"Rochester", "state":"NY", "country":"United States" }, { "name":"Buffalo", "state":"NY", "country":"United States" }, { "name":"Seattle", "state":"WA", "country":"United States" }, { "name":"Portland", "state":"FL", "country":"United States" }, { "name":"Las Vegas", "state":"CA", "country":"United States" }, { "name":"Sacramento", "state":"CA", "country":"United States" }, { "name":"San Jose", "state":"CA", "country":"United States" }, { "name":"San Francisco", "state":"CA", "country":"United States" }, { "name":"San Diego", "state":"CA", "country":"United States" }, { "name":"Los Angeles", "state":"CA", "country":"United States" }, { "name":"Phoenix", "state":"AZ", "country":"United States" }, { "name":"Miami", "state":"FL", "country":"United States" }, { "name":"New York", "state":"NY", "country":"United States" }, { "name":"West Palm Beach", "state":"FL", "country":"United States" }, { "name":"Dallas", "state":"TX", "country":"United States" }, { "name":"Wichita", "state":"KS", "country":"United States" } ] }';
+var text = ' { "metro":[ { "name":"Boston", "state":"MA", "country":"United States" }, { "name":"Austin", "state":"TX", "country":"United States" }, { "name":"Jacksonville", "state":"FL", "country":"United States" }, { "name":"Pensacola", "state":"FL", "country":"United States" }, { "name":"New Orleans", "state":"LA", "country":"United States" }, { "name":"Houston", "state":"TX", "country":"United States" }, { "name":"Atlanta", "state":"FL", "country":"United States" }, { "name":"Nashville", "state":"TN", "country":"United States" }, { "name":"Memphis", "state":"TN", "country":"United States" }, { "name":"Little Rock", "state":"AR", "country":"United States" }, { "name":"Denver", "state":"CO", "country":"United States" }, { "name":"Milwaukee", "state":"WI", "country":"United States" }, { "name":"El Paso", "state":"TX", "country":"United States" }, { "name":"Tampa", "state":"FL", "country":"United States" }, { "name":"Orlando", "state":"FL", "country":"United States" }, { "name":"Philadelphia", "state":"PA", "country":"United States" }, { "name":"Minneapolis", "state":"MN", "country":"United States" }, { "name":"Columbus", "state":"OH", "country":"United States" }, { "name":"Cleveland", "state":"OH", "country":"United States" }, { "name":"Pittsburgh", "state":"PA", "country":"United States" }, { "name":"Washington DC", "state":"MD", "country":"United States" }, { "name":"Baltimore", "state":"MD", "country":"United States" }, { "name":"Virginia Beach", "state":"VA", "country":"United States" }, { "name":"Richmond", "state":"VA", "country":"United States" }, { "name":"Detroit", "state":"MI", "country":"United States" }, { "name":"Chicago", "state":"IL", "country":"United States" }, { "name":"St Louis", "state":"MO", "country":"United States" }, { "name":"Indianapolis", "state":"IN", "country":"United States" }, { "name":"Louisville", "state":"KY", "country":"United States" }, { "name":"Cincinnati", "state":"OH", "country":"United States" }, { "name":"Syracuse", "state":"NY", "country":"United States" }, { "name":"Rochester", "state":"NY", "country":"United States" }, { "name":"Buffalo", "state":"NY", "country":"United States" }, { "name":"Seattle", "state":"WA", "country":"United States" }, { "name":"Portland", "state":"FL", "country":"United States" }, { "name":"Las Vegas", "state":"CA", "country":"United States" }, { "name":"Sacramento", "state":"CA", "country":"United States" }, { "name":"San Jose", "state":"CA", "country":"United States" }, { "name":"San Francisco", "state":"CA", "country":"United States" }, { "name":"San Diego", "state":"CA", "country":"United States" }, { "name":"Los Angeles", "state":"CA", "country":"United States" }, { "name":"Phoenix", "state":"AZ", "country":"United States" }, { "name":"Miami", "state":"FL", "country":"United States" }, { "name":"New York", "state":"NY", "country":"United States" }, { "name":"West Palm Beach", "state":"FL", "country":"United States" }, { "name":"Dallas", "state":"TX", "country":"United States" }, { "name":"Wichita", "state":"KS", "country":"United States" } ] }';
 var json_obj = JSON.parse(text);
 
-function tooltipHtml(n, d) {    /* function to create html content string in tooltip div. */
-    return "<h4>" + n + "</h4><table>" +
-        "<tr><td>" + (d.img0) + "</td><td>" + (d.trk0) + "</td></tr>" +
-        "<tr><td>" + (d.img1) + "</td><td>" + (d.trk1) + "</td></tr>" +
-        "<tr><td>" + (d.img2) + "</td><td>" + (d.trk2) + "</td></tr>" +
-        "<tr><td>" + (d.img3) + "</td><td>" + (d.trk3) + "</td></tr>" +
-        "<tr><td>" + (d.img4) + "</td><td>" + (d.trk4) + "</td></tr>" +
-        "</table>";
+var sampleData = {};
+var nTracks = 5;
+/* amount of tracks to be shown in each tooltip */
+
+function setMapData() {
+    /* Sample random data. */
+    ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+        "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
+        "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
+        "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
+        "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+        .forEach(function (d) {
+            for (var i = 0; i < json_obj.metro.length; i++) {
+                var obj = json_obj.metro[i];
+                var metro_name;
+                var metro_state;
+
+                if (obj["state"] === d) {
+                    metro_state = obj["state"];
+                    metro_name = obj["name"];
+                    break;
+                }
+            }
+
+            var images = [];
+            var tracks = [];
+            var listeners = 0;
+            lastfm.geo.getMetroTrackChart({metro: metro_name, country: 'United States', limit: nTracks}, {success: function (data) {
+                /* Use data. */
+                if (data.toptracks.track != undefined) {
+
+                    console.log(data.toptracks.track);
+
+                    //console.log(metro_name);
+
+                    sampleData[d] = {};
+                    sampleData[d].img = [];
+                    sampleData[d].trk = [];
+                    for (var i = 0; i < nTracks; i++) {
+                        if (data.toptracks.track[i].image != undefined) {
+                            images[i] = data.toptracks.track[i].image[0]["#text"];
+                        }
+                        else {
+                            images[i] = "../img/not-found36.png";
+                        }
+                        tracks[i] = data.toptracks.track[i].name +
+                            ' - ' +
+                            data.toptracks.track[i].artist.name;
+                        listeners += parseInt(data.toptracks.track[i].listeners);
+
+                        //console.log(' [' + images[i] + '] ' + tracks[i]);
+                        sampleData[d].img[i] = images[i];
+                        sampleData[d].trk[i] = tracks[i];
+                    }
+                    sampleData[d].color = d3.interpolate("#ffffcc", "#800026")(listeners / 1000);
+
+                    //console.log(listeners);
+                }
+
+            }, error: function (code, message) {
+                /* Show error message. */
+                //console.log('Error ' + code + ': ' + message);
+            }});
+        });
 }
 
-var sampleData = {};
-/* Sample random data. */
-["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-    "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
-    "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
-    "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
-    "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
-    .forEach(function (d) {
-        for (var i = 0; i < json_obj.city.length; i++) {
-            var obj = json_obj.city[i];
-            var city_name;
-            var city_state;
+function tooltipHtml(n, d) {    /* function to create html content string in tooltip div. */
+    var tooltip = "<h4>" + n + "</h4><table>";
 
-            if (obj["state"] === d) {
-                city_state = obj["state"];
-                city_name = obj["name"];
-                break;
-            }
-        }
+    for (var i = 0; i < nTracks; i++) {
+        tooltip += "<tr><td>" +
+            "<img src='" + (d.img[i]) + "' height='36' width='36'" +
+            "</td><td>" +
+            (d.trk[i]) +
+            "</td></tr>";
+    }
 
-        var images = [];
-        var tracks = [];
-        var listeners = 0;
-        lastfm.geo.getMetroTrackChart({metro: city_name, country: 'United States', limit: 5}, {success: function (data) {
-            /* Use data. */
-            if (data.toptracks.track != undefined) {
+    tooltip += "</table>";
 
-                console.log(city_name);
-                for (var i = 0; i < 5; i++) {
-                    images[i] = 'img' + i;
-                    tracks[i] = data.toptracks.track[i].name;
-                    listeners += parseInt(data.toptracks.track[i].listeners);
-                    console.log(' [' + images[i] + '] ' + tracks[i]);
-                }
-                console.log(listeners);
+    return tooltip;
+}
 
-            }
-        }, error: function (code, message) {
-            /* Show error message. */
-            //console.log('Error ' + code + ': ' + message);
-        }});
-
-
-        sampleData[d] = {
-            'img0': images[0], 'img1': images[1], 'img2': images[2], 'img3': images[3], 'img4': images[4],
-            'trk0': tracks[0], 'trk1': tracks[1], 'trk2': tracks[2], 'trk3': tracks[3], 'trk4': tracks[4],
-            'color': d3.interpolate("#ffffcc", "#800026")(listeners / 100)
-        };
-
-
-    });
-
-/* draw states on id #statesvg */
-uStates.draw("#statesvg", sampleData, tooltipHtml);
+function drawMap() {
+    /* draw states on id #statesvg */
+    console.log(sampleData);
+    uStates.draw("#statesvg", sampleData, tooltipHtml);
+}
