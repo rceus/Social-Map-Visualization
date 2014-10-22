@@ -81,20 +81,40 @@
 			var cache = new LastFMCache();
 
 			var lastFM = newLastFM({
-				apikey: "9450310003b8769c8ba77933c7fbd8df",
-				apisecret: "is afcbd261dd01ab5dd9ee529e7e0f1a14",
+				apiKey: "9450310003b8769c8ba77933c7fbd8df",
+				apiSecret: "is afcbd261dd01ab5dd9ee529e7e0f1a14",
 				cache: cache
 			});
 
-			//Identify City of each d (state) make a variable
-
+			//Identify City(name) of each d (state) make a variable
+			var metro;
+			//Need to insert the json file in this
+			var usa = "United States";
+			for(key in json){
+				if(json[state]==d)
+				{
+					metro=json[name];
+				}
+				else
+				{
+					//For now just init it to Austin
+					metro="Austin"
+				}
+			}
 
 
 			for(var i = 0; i<5; i++)
 			{
 				//For every state assign it these arrays of top 5 tracks with images alongwith
-				//Use the lastfm api call with params: cities i and imagelink
-				//use the lastfm api call with params: cities i and tracklink
+				//Use the lastfm api call with params: city i and imagelink
+				lastFM.geo.getMetroArtistsChart(metro,usa){
+						
+				};
+				//use the lastfm api call with params: city i and tracklink
+				lastFM.geo.getMetroArtistsChart(metro,usa){
+						
+				};
+
 			}
 
 			sampleData[d]={
