@@ -75,13 +75,26 @@
 
 			//Define an array images
 			//Define an array tracks
-
 			var images[5];
 			var tracks[5];
+
+			var cache = new LastFMCache();
+
+			var lastFM = newLastFM({
+				apikey: "9450310003b8769c8ba77933c7fbd8df",
+				apisecret: "is afcbd261dd01ab5dd9ee529e7e0f1a14",
+				cache: cache
+			});
+
+			//Identify City of each d (state) make a variable
+
+
 
 			for(var i = 0; i<5; i++)
 			{
 				//For every state assign it these arrays of top 5 tracks with images alongwith
+				//Use the lastfm api call with params: cities i and imagelink
+				//use the lastfm api call with params: cities i and tracklink
 			}
 
 			sampleData[d]={
