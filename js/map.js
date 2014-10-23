@@ -77,6 +77,11 @@ function setMapData() {
 
                             urls[i] = data.toptracks.track[i].url;
 
+//                            $('#spotify').load(urls[i],function(p){
+//                                var value=$(p).find("#spotify-inline-play-button").attr("data-uri");
+//                                console.log(value);
+//                            });
+
                             //console.log(' [' + images[i] + '] ' + tracks[i]);
                             sampleData[d].img[i] = images[i];
                             sampleData[d].trk[i] = tracks[i];
@@ -114,6 +119,11 @@ function setMapData() {
 
                         urls[i] = data.toptracks.track[i].url;
 
+//                        $('#spotify').load(urls[i],function(p){
+//                            var value=$(p).find("#spotify-inline-play-button").attr("data-uri");
+//                            console.log(value);
+//                        });
+
                         sampleData[d].img[i] = images[i];
                         sampleData[d].trk[i] = tracks[i];
                         sampleData[d].url[i] = urls[i];
@@ -140,7 +150,7 @@ function tooltipHtml(n, d) {    /* function to create html content string in too
             "</td><td>" +
             '<a href="' +
             (d.url[i]) +
-            '">' +
+            '" target="_blank">' +
             (d.trk[i]) +
             "</a>" +
             "</td></tr>";

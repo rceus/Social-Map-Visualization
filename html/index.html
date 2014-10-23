@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <link rel="stylesheet" href="../css/map.css">
-    <link rel="stylesheet" href="../css/starter-template.css">
+    <!-- <meta http-equiv="Content-Type" content="text/html;charset=utf-8"> -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 
     <!-- creates uStates. -->
@@ -20,10 +25,25 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
     <script type="text/javascript" src="../js/spin.min.js"></script>
+
+    <link rel="stylesheet" href="../css/map.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/starter-template.css">
+
     <title>MapFM</title>
 </head>
 <body>
+
+<!--<div id="header">-->
+
+<!--</div>-->
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -38,63 +58,47 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <!-- <li class="active"><a href="#">Home</a></li> -->
-                <li><a href="../CS467%20Design%203.pdf">About</a></li>
-                <!-- <li><a href="#contact">Contact</a></li> -->
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="../CS467 Design 3.pdf" target="_blank">Design presentation</a></li>
+                <!--<li><a href="#contact">Contact</a></li>-->
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>
 
-<div class="container">
 
-    <div class="starter-template">
-        <h1>MapFM</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac hendrerit augue. Curabitur egestas fermentum vulputate. Donec quis ipsum vitae nulla aliquet posuere eu.</p>
+        <div style="text-align: center;"><h1>MapFM</h1></div>
+
+
+<div id="main-wrap">
+    <div id="state_data"></div>
+    <div id="content-wrap">
 
         <!-- div to hold tooltip. -->
         <div id="tooltip"></div>
 
-        <script>
-            var opts = {
-                lines: 11, // The number of lines to draw
-                length: 40, // The length of each line
-                width: 13, // The line thickness
-                radius: 40, // The radius of the inner circle
-                corners: 1, // Corner roundness (0..1)
-                rotate: 10, // The rotation offset
-                direction: 1, // 1: clockwise, -1: counterclockwise
-                color: '#000', // #rgb or #rrggbb or array of colors
-                speed: 0.7, // Rounds per second
-                trail: 83, // Afterglow percentage
-                shadow: false, // Whether to render a shadow
-                hwaccel: false, // Whether to use hardware acceleration
-                className: 'spinner', // The CSS class to assign to the spinner
-                zIndex: 2e9, // The z-index (defaults to 2000000000)
-                top: '50%', // Top position relative to parent
-                left: '50%' // Left position relative to parent
-            };
-        </script>
+        <!-- spotify -->
+        <div id="spotify" style="display: none;"></div>
+
         <div id="spin">
-            <script>
-                var target = document.getElementById('spin');
-                var spinner = new Spinner(opts).spin(target);
-                target.appendChild(spinner.el);
-            </script>
+            <script src="../js/spinner.js" type="text/javascript"></script>
         </div>
         <script src="../js/map.js" type="text/javascript"></script>
         <script>
             setMapData();
             setTimeout("drawMap()", 20000);
         </script>
-
-        <div id="state_data">
-
-        </div>
     </div>
 
-</div><!-- /.container -->
+</div>
 
+<footer>
+<p>Created by Ashna Iyer, Rafael Mendes, Rishabh Jain and Rohan Joseph</p>
+    <p><a href="http://www.last.fm/api" target="_blank">Last.fm API</a>
+        |
+       <a href="http://bl.ocks.org/NPashaP/a74faf20b492ad377312" target="_blank">US State Map</a></p>
+<p>CS467-FA14 - University of Illinois at Urbana-Champaign</p>
+</footer>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

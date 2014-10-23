@@ -1,0 +1,44 @@
+#state_data {
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+
+#state_data h4 {
+    font: 16px sans-serif;
+    font-weight: bold;
+    color: white;
+    background: lightsteelblue;
+    background:rgba(0,0,0,0.9);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#state_data table {
+    width: 100%;
+    table-layout:fixed;
+    border: 1px;
+    font: 14px sans-serif;
+    color: white;
+    background: lightsteelblue;
+    background:rgba(0,0,0,0.9);
+    border-radius: 5px;
+}
+
+#state_data table a {
+    color: white;
+}
+
+#state_data tr td{
+    padding: 10px;
+    margin: 10px;
+}
+#state_data tr td:nth-child(1){
+    width:50px;
+}
+#state_data tr td:nth-child(2){
+    text-align:center;
+}
