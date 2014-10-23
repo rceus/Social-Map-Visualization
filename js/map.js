@@ -45,6 +45,12 @@ function setMapData() {
             var images = [];
             var tracks = [];
             var listeners = 0;
+            var urls = [];
+
+            sampleData[d] = {};
+            sampleData[d].img = [];
+            sampleData[d].trk = [];
+            sampleData[d].url = [];
 
             if (flag == true) {
                 lastfm.geo.getMetroTrackChart({metro: metro_name, country: 'United States', limit: nTracks}, {success: function (data) {
@@ -55,9 +61,6 @@ function setMapData() {
 
                         //console.log(metro_name);
 
-                        sampleData[d] = {};
-                        sampleData[d].img = [];
-                        sampleData[d].trk = [];
                         for (var i = nTracks - 1; i >= 0; i--) {
                             if (data.toptracks.track[i].image != undefined) {
                                 images[i] = data.toptracks.track[i].image[0]["#text"];
@@ -72,9 +75,12 @@ function setMapData() {
                                 data.toptracks.track[i].artist.name +
                                 ' [' + listeners.toString() + ']';
 
+                            urls[i] = data.toptracks.track[i].url;
+
                             //console.log(' [' + images[i] + '] ' + tracks[i]);
                             sampleData[d].img[i] = images[i];
                             sampleData[d].trk[i] = tracks[i];
+                            sampleData[d].url[i] = urls[i];
                         }
                         //sampleData[d].color = d3.interpolate("#ffffcc", "#800026")(listeners / 1000);
                         sampleData[d].color = d3.interpolate("#407f7f", "#003333")(listeners / 1000);
@@ -92,10 +98,6 @@ function setMapData() {
                 lastfm.geo.getTopTracks({country: 'United States', limit: nTracks}, {success: function (data) {
                     console.log(data);
 
-                    sampleData[d] = {};
-                    sampleData[d].img = [];
-                    sampleData[d].trk = [];
-
                     for (var i = nTracks - 1; i >= 0; i--) {
                         if (data.toptracks.track[i].image != undefined) {
                             images[i] = data.toptracks.track[i].image[0]["#text"];
@@ -110,8 +112,11 @@ function setMapData() {
                             //+ ' [' + listeners + ']'
                             ;
 
+                        urls[i] = data.toptracks.track[i].url;
+
                         sampleData[d].img[i] = images[i];
                         sampleData[d].trk[i] = tracks[i];
+                        sampleData[d].url[i] = urls[i];
                     }
 
                     sampleData[d].color = "#669999";
@@ -133,7 +138,11 @@ function tooltipHtml(n, d) {    /* function to create html content string in too
         tooltip += "<tr><td>" +
             "<img src='" + (d.img[i]) + "' height='36' width='36'>" +
             "</td><td>" +
+            '<a href="' +
+            (d.url[i]) +
+            '">' +
             (d.trk[i]) +
+            "</a>" +
             "</td></tr>";
     }
 
