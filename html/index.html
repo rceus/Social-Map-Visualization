@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <!-- <li class="active"><a href="#">Home</a></li> -->
-                 <li><a href="../CS467%20Design%203.pdf">About</a></li>
+                <li><a href="../CS467%20Design%203.pdf">About</a></li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
             </ul>
         </div><!--/.nav-collapse -->
@@ -76,17 +76,21 @@
             };
         </script>
         <div id="spin">
-               <script>
-                   var target = document.getElementById('spin');
-                   var spinner = new Spinner(opts).spin(target);
-                   target.appendChild(spinner.el);
-               </script>
+            <script>
+                var target = document.getElementById('spin');
+                var spinner = new Spinner(opts).spin(target);
+                target.appendChild(spinner.el);
+            </script>
         </div>
         <script src="../js/map.js" type="text/javascript"></script>
         <script>
             setMapData();
-            setTimeout("drawMap()", 10000);
+            setTimeout("drawMap()", 20000);
         </script>
+
+        <div id="state_data">
+
+        </div>
     </div>
 
 </div><!-- /.container -->

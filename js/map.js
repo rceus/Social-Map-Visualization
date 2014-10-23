@@ -16,8 +16,8 @@ var json_obj = JSON.parse(text);
 var sampleData = {};
 
 /* amount of tracks to be shown in each tooltip */
-var nTracks = 5;
-
+var nTracks = 10;
+var flag = false;
 function setMapData() {
     /* Sample random data. */
     ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
@@ -34,49 +34,95 @@ function setMapData() {
                 if (obj["state"] === d) {
                     metro_state = obj["state"];
                     metro_name = obj["name"];
+                    flag = true;
                     break;
+                }
+                else {
+                    flag = false;
                 }
             }
 
             var images = [];
             var tracks = [];
             var listeners = 0;
-            lastfm.geo.getMetroTrackChart({metro: metro_name, country: 'United States', limit: nTracks}, {success: function (data) {
-                /* Use data. */
-                if (data.toptracks.track != undefined) {
 
-                    console.log(data.toptracks.track);
+            if (flag == true) {
+                lastfm.geo.getMetroTrackChart({metro: metro_name, country: 'United States', limit: nTracks}, {success: function (data) {
+                    /* Use data. */
+                    if (data.toptracks.track != undefined) {
 
-                    //console.log(metro_name);
+                        console.log(data.toptracks.track);
+
+                        //console.log(metro_name);
+
+                        sampleData[d] = {};
+                        sampleData[d].img = [];
+                        sampleData[d].trk = [];
+                        for (var i = nTracks - 1; i >= 0; i--) {
+                            if (data.toptracks.track[i].image != undefined) {
+                                images[i] = data.toptracks.track[i].image[0]["#text"];
+                            }
+                            else {
+                                images[i] = "../img/not-found36.png";
+                            }
+                            listeners += parseInt(data.toptracks.track[i].listeners);
+
+                            tracks[i] = data.toptracks.track[i].name +
+                                ' - ' +
+                                data.toptracks.track[i].artist.name +
+                                ' [' + listeners.toString() + ']';
+
+                            //console.log(' [' + images[i] + '] ' + tracks[i]);
+                            sampleData[d].img[i] = images[i];
+                            sampleData[d].trk[i] = tracks[i];
+                        }
+                        //sampleData[d].color = d3.interpolate("#ffffcc", "#800026")(listeners / 1000);
+                        sampleData[d].color = d3.interpolate("#407f7f", "#003333")(listeners / 1000);
+
+                        //console.log(listeners);
+                    }
+
+                }, error: function (code, message) {
+                    /* Show error message. */
+                    //console.log('Error ' + code + ': ' + message);
+                }
+                });
+            }
+            else {
+                lastfm.geo.getTopTracks({country: 'United States', limit: nTracks}, {success: function (data) {
+                    console.log(data);
 
                     sampleData[d] = {};
                     sampleData[d].img = [];
                     sampleData[d].trk = [];
-                    for (var i = 0; i < nTracks; i++) {
+
+                    for (var i = nTracks - 1; i >= 0; i--) {
                         if (data.toptracks.track[i].image != undefined) {
                             images[i] = data.toptracks.track[i].image[0]["#text"];
                         }
                         else {
                             images[i] = "../img/not-found36.png";
                         }
-                        tracks[i] = data.toptracks.track[i].name +
-                            ' - ' +
-                            data.toptracks.track[i].artist.name;
+
                         listeners += parseInt(data.toptracks.track[i].listeners);
 
-                        //console.log(' [' + images[i] + '] ' + tracks[i]);
+                        tracks[i] = data.toptracks.track[i].name + ' - ' + data.toptracks.track[i].artist.name
+                            //+ ' [' + listeners + ']'
+                            ;
+
                         sampleData[d].img[i] = images[i];
                         sampleData[d].trk[i] = tracks[i];
                     }
-                    sampleData[d].color = d3.interpolate("#ffffcc", "#800026")(listeners / 1000);
 
-                    //console.log(listeners);
+                    sampleData[d].color = "#669999";
+
+                }, error: function (code, message) {
+                    /* Show error message. */
+                    console.log('Error ' + code + ': ' + message);
                 }
+                });
+            }
 
-            }, error: function (code, message) {
-                /* Show error message. */
-                //console.log('Error ' + code + ': ' + message);
-            }});
         });
 }
 
@@ -85,7 +131,7 @@ function tooltipHtml(n, d) {    /* function to create html content string in too
 
     for (var i = 0; i < nTracks; i++) {
         tooltip += "<tr><td>" +
-            "<img src='" + (d.img[i]) + "' height='36' width='36'" +
+            "<img src='" + (d.img[i]) + "' height='36' width='36'>" +
             "</td><td>" +
             (d.trk[i]) +
             "</td></tr>";
